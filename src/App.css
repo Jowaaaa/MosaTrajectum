@@ -13,6 +13,39 @@
   }
 }
 
+
+  .rustig::after {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background: green;
+    margin: 20px;
+    text-align: center;
+    content: 'rustig + 10';
+  }
+
+  .middel::after {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background: orange;
+    margin: 20px;
+    text-align: center;
+    content: 'middel + 5'
+  }
+
+  .druk::after {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background: red;
+    margin: 20px;
+    text-align: center;
+    content: 'druk + 0'
+  }
+
+
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
