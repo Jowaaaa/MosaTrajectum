@@ -28,8 +28,6 @@ const ImageWithSquare = () => {
 
         const { x, y } = squarePositions[i]; // Get the x and y positions from the squarePositions array
 
-        //context.fillRect(x, y, 20, 20); // Draw a square at the specified position
-
         context.beginPath();
         context.arc(x, y, 10, 0, 2 * Math.PI); // Draw a circle at the specified position
         context.fill();
@@ -47,7 +45,7 @@ const ImageWithSquare = () => {
   return (
     <div>
       <canvas ref={canvasRef} width={500} height={500} />
-      <img ref={imageRef} src={imageSrc} alt="Your Image" style={{ display: 'none' }} />
+      <img ref={imageRef} src={imageSrc} alt="Kwartieren Maastricht" style={{ display: 'none' }} />
     </div>
   );
 };
