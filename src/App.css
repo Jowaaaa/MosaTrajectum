@@ -44,6 +44,9 @@
     content: 'druk + 0'
   }
 
+.images{
+  display: inline-flexbox;
+}
 
 
 .App-header {
