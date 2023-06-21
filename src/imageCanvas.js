@@ -1,5 +1,6 @@
-import React, { useRef, useEffect } from 'react';
-import imageSrc from '../src/Kwartieren.png';  // Replace with the actual path to your image
+import React, { useRef, useEffect } from "react";
+import imageSrc from "../src/Kwartieren.png"; // Replace with the actual path to your image
+import "./App.css";
 
 const ImageWithSquare = () => {
   const canvasRef = useRef(null);
@@ -7,18 +8,18 @@ const ImageWithSquare = () => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const context = canvas.getContext('2d');
+    const context = canvas.getContext("2d");
 
     const drawImageAndSquares = () => {
       context.drawImage(imageRef.current, 0, 0, canvas.width, canvas.height); // Draw the image onto the canvas
 
-      const colors = ['green', 'orange', 'red']; // Available colors for the squares
+      const colors = ["green", "orange", "red"]; // Available colors for the squares
 
       const squarePositions = [
-        { x: 150, y: 250 },    // Position of the first square
-        { x: 200, y: 100 },   // Position of the second square
-        { x: 230, y: 240 },   // Position of the third square
-        { x: 350, y: 325 },   // Position of the fourth square
+        { x: 150, y: 250 }, // Position of the first square
+        { x: 200, y: 100 }, // Position of the second square
+        { x: 230, y: 240 }, // Position of the third square
+        { x: 350, y: 325 }, // Position of the fourth square
       ];
 
       for (let i = 0; i < squarePositions.length; i++) {
@@ -32,20 +33,59 @@ const ImageWithSquare = () => {
         context.arc(x, y, 10, 0, 2 * Math.PI); // Draw a circle at the specified position
         context.fill();
         context.closePath();
+
+        // Add additional circles based on the color
+
+        if (colors[colorIndex] === "red") {
+          for (let j = 0; j < 3; j++) {
+            const offsetX = Math.random() * 50 - 10; // Generate a random X offset within -10 to +10
+            const offsetY = Math.random() * 50 - 10; // Generate a random Y offset within -10 to +10
+
+            context.beginPath();
+            context.arc(x + offsetX, y + offsetY, 5, 0, 2 * Math.PI); // Draw a small circle at a random offset position
+            context.fill();
+            context.closePath();
+          }
+        } else if (colors[colorIndex] === "orange") {
+          for (let j = 0; j < 5; j++) {
+            const offsetX = Math.random() * 50 - 7.5; // Generate a random X offset within -7.5 to +7.5
+            const offsetY = Math.random() * 50 - 7.5; // Generate a random Y offset within -7.5 to +7.5
+
+            context.beginPath();
+            context.arc(x + offsetX, y + offsetY, 5, 0, 2 * Math.PI); // Draw a small circle at a random offset position
+            context.fill();
+            context.closePath();
+          }
+        } else if (colors[colorIndex] === "green") {
+          for (let j = 0; j < 8; j++) {
+            const offsetX = Math.random() * 75 - 5; // Generate a random X offset within -5 to +5
+            const offsetY = Math.random() * 75 - 5; // Generate a random Y offset within -5 to +5
+
+            context.beginPath();
+            context.arc(x + offsetX, y + offsetY, 5, 0, 2 * Math.PI); // Draw a small circle at a random offset position
+            context.fill();
+            context.closePath();
+          }
+        }
       }
     };
 
-    imageRef.current.addEventListener('load', drawImageAndSquares); // Wait for the image to load before drawing the image and squares
+    imageRef.current.addEventListener("load", drawImageAndSquares); // Wait for the image to load before drawing the image and squares
 
     return () => {
-      imageRef.current.removeEventListener('load', drawImageAndSquares); // Clean up event listener on unmount
+      imageRef.current.removeEventListener("load", drawImageAndSquares); // Clean up event listener on unmount
     };
   }, []);
 
   return (
-    <div>
+    <div className="canvas-wrapper">
       <canvas ref={canvasRef} width={500} height={500} />
-      <img ref={imageRef} src={imageSrc} alt="Kwartieren Maastricht" style={{ display: 'none' }} />
+      <img
+        ref={imageRef}
+        src={imageSrc}
+        alt="Kwartieren"
+        style={{ display: "none" }}
+      />
     </div>
   );
 };
