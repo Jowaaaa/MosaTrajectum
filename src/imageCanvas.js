@@ -12,7 +12,6 @@ const ImageWithSquare = () => {
 
     const drawImageAndSquares = () => {
       context.drawImage(imageRef.current, 0, 0, canvas.width, canvas.height); // Draw the image onto the canvas
-
       const colors = ["green", "orange", "red"]; // Available colors for the squares
 
       const squarePositions = [
@@ -29,6 +28,9 @@ const ImageWithSquare = () => {
 
         const { x, y } = squarePositions[i]; // Get the x and y positions from the squarePositions array
 
+        const pinWidth = 10;
+        const pinHeight = 30;
+
         context.beginPath();
         context.arc(x, y, 10, 0, 2 * Math.PI); // Draw a circle at the specified position
         context.fill();
@@ -42,9 +44,12 @@ const ImageWithSquare = () => {
             const offsetY = Math.random() * 50 - 10; // Generate a random Y offset within -10 to +10
 
             context.beginPath();
-            context.arc(x + offsetX, y + offsetY, 5, 0, 2 * Math.PI); // Draw a small circle at a random offset position
-            context.fill();
+            context.moveTo(x + offsetX, y + offsetY);
+            context.lineTo(x + offsetX - pinWidth / 2, y + offsetY - pinHeight);
+            context.lineTo(x + offsetX + pinWidth / 2, y + offsetY - pinHeight);
             context.closePath();
+            context.fillStyle = "DarkRed";
+            context.fill();
           }
         } else if (colors[colorIndex] === "orange") {
           for (let j = 0; j < 5; j++) {
@@ -52,9 +57,12 @@ const ImageWithSquare = () => {
             const offsetY = Math.random() * 50 - 7.5; // Generate a random Y offset within -7.5 to +7.5
 
             context.beginPath();
-            context.arc(x + offsetX, y + offsetY, 5, 0, 2 * Math.PI); // Draw a small circle at a random offset position
-            context.fill();
+            context.moveTo(x + offsetX, y + offsetY);
+            context.lineTo(x + offsetX - pinWidth / 2, y + offsetY - pinHeight);
+            context.lineTo(x + offsetX + pinWidth / 2, y + offsetY - pinHeight);
             context.closePath();
+            context.fillStyle = "DarkRed";
+            context.fill();
           }
         } else if (colors[colorIndex] === "green") {
           for (let j = 0; j < 8; j++) {
@@ -62,9 +70,12 @@ const ImageWithSquare = () => {
             const offsetY = Math.random() * 75 - 5; // Generate a random Y offset within -5 to +5
 
             context.beginPath();
-            context.arc(x + offsetX, y + offsetY, 5, 0, 2 * Math.PI); // Draw a small circle at a random offset position
-            context.fill();
+            context.moveTo(x + offsetX, y + offsetY);
+            context.lineTo(x + offsetX - pinWidth / 2, y + offsetY - pinHeight);
+            context.lineTo(x + offsetX + pinWidth / 2, y + offsetY - pinHeight);
             context.closePath();
+            context.fillStyle = "DarkRed";
+            context.fill();
           }
         }
       }
