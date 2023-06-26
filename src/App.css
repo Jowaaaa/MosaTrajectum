@@ -6,11 +6,11 @@ body {
   color: red;
   margin: 20px;
   font-family: fantasy;
+  text-align: center;
 }
 .App {
   text-align: center;
 }
-
 
 .navbar {
   position: fixed;
@@ -39,8 +39,6 @@ body {
   transform: scale(1.2);
 }
 
-
-
 .navbar-icons li {
   margin: 0 10px;
 }
@@ -54,6 +52,7 @@ body {
 .score {
   font-size: small;
   text-align: right;
+  text-align: top;
   margin: 10px;
 }
 
@@ -98,6 +97,36 @@ body {
 .App-link {
   color: #61dafb;
 }
+
+.dropdown {
+  margin-top: 250px;
+  text-align: center;
+}
+
+.image-grid {
+  align-items: center;
+  margin: 25%;
+  display: grid;
+  flex-wrap: wrap;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.column {
+  flex: 50%;
+  padding: 10px;
+  align-items: center;
+}
+
+.grid-image {
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+}
+
 
 @keyframes App-logo-spin {
   from {

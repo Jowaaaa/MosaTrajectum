@@ -2,6 +2,9 @@ import React, { useRef, useEffect } from "react";
 import imageSrc from "../src/Kwartieren.png"; // Replace with the actual path to your image
 import "./App.css";
 
+
+const VoorkeurOptie = localStorage.getItem("choice");
+
 const ImageWithSquare = () => {
   const canvasRef = useRef(null);
   const imageRef = useRef(null);
@@ -21,6 +24,7 @@ const ImageWithSquare = () => {
         { x: 350, y: 325 }, // Position of the fourth square
       ];
 
+
       for (let i = 0; i < squarePositions.length; i++) {
         const colorIndex = Math.floor(Math.random() * colors.length); // Select a random color index
 
@@ -36,10 +40,16 @@ const ImageWithSquare = () => {
         context.fill();
         context.closePath();
 
-        // Add additional circles based on the color
+        context.font = "bold 12px Arial";
+        context.fillStyle = "white";
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+        context.fillText("P", x, y);
 
+        // Add additional circles based on the color
+        
         if (colors[colorIndex] === "red") {
-          for (let j = 0; j < 3; j++) {
+          for (let j = 0; j < 2; j++) {
             const offsetX = Math.random() * 50 - 10; // Generate a random X offset within -10 to +10
             const offsetY = Math.random() * 50 - 10; // Generate a random Y offset within -10 to +10
 
@@ -52,7 +62,7 @@ const ImageWithSquare = () => {
             context.fill();
           }
         } else if (colors[colorIndex] === "orange") {
-          for (let j = 0; j < 5; j++) {
+          for (let j = 0; j < 4; j++) {
             const offsetX = Math.random() * 50 - 7.5; // Generate a random X offset within -7.5 to +7.5
             const offsetY = Math.random() * 50 - 7.5; // Generate a random Y offset within -7.5 to +7.5
 
@@ -65,7 +75,7 @@ const ImageWithSquare = () => {
             context.fill();
           }
         } else if (colors[colorIndex] === "green") {
-          for (let j = 0; j < 8; j++) {
+          for (let j = 0; j < 6; j++) {
             const offsetX = Math.random() * 75 - 5; // Generate a random X offset within -5 to +5
             const offsetY = Math.random() * 75 - 5; // Generate a random Y offset within -5 to +5
 
@@ -76,15 +86,33 @@ const ImageWithSquare = () => {
             context.closePath();
             context.fillStyle = "DarkRed";
             context.fill();
-          }
+
+            if (VoorkeurOptie === "Image 3" && j < 2){
+              const offsetX = Math.random() * 50 - 10; // Generate a random X offset within -10 to +10
+              const offsetY = Math.random() * 50 - 10; // Generate a random Y offset within -10 to +10
+    
+              context.beginPath();
+              context.moveTo(x + offsetX, y + offsetY);
+              context.lineTo(x + offsetX - pinWidth / 2, y + offsetY - pinHeight);
+              context.lineTo(x + offsetX + pinWidth / 2, y + offsetY - pinHeight);
+              context.closePath();
+              context.fillStyle = "orange";
+              context.fill();
+    
+            }
+          } 
         }
       }
+
+      
     };
 
-    imageRef.current.addEventListener("load", drawImageAndSquares); // Wait for the image to load before drawing the image and squares
+    const currImage = imageRef.current;
+
+    currImage.addEventListener("load", drawImageAndSquares); // Wait for the image to load before drawing the image and squares
 
     return () => {
-      imageRef.current.removeEventListener("load", drawImageAndSquares); // Clean up event listener on unmount
+      currImage.removeEventListener("load", drawImageAndSquares); // Clean up event listener on unmount
     };
   }, []);
 

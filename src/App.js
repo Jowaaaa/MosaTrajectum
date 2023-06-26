@@ -1,32 +1,34 @@
-import './App.css';
-import React from 'react';
-import ImageWithSquare from '../src/imageCanvas';
-import BottomNavigationBar from './navbar';
+import { Routes, Route} from 'react-router-dom';
+import Home from './pages/Home';
+import React, {useState} from 'react';
+import Voorkeuren from './pages/Voorkeuren'
 
-function App() {
+
+const App = () => {
+  
+  const [selectedOption, setSelectedOption] = useState("");
+  const handleOptionChange = option => {
+    setSelectedOption(option);
+  };
 
   return (
-    <div>
-      <div>
-        <p className='score'>Sterren: 240</p>
-      </div>
-    <div className='App'>
-      <div>
-      <h1 className='h1'>Welkom bij Mosa Trajectum</h1>
-      <h4 style={{margin: "20px", color: "black"}}>Points of Interest op basis van parkeerdrukte</h4>
-      </div>
-      <div>
-        <ImageWithSquare/>
-      </div> 
-      <div class="container">
-        <nav class="navbar">
-          <BottomNavigationBar/>
-        </nav>
-      </div>   
-    </div>
-    </div>
+    <>
+      <Routes>
+        <Route
+          path="/"
+          element={<Home selectedOption={selectedOption} />}
+        />
+        <Route
+          path="/voorkeuren"
+          element={
+            <Voorkeuren
+              handleOptionChange={handleOptionChange}
+            />
+          }
+        />
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;
-
