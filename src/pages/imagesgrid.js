@@ -17,55 +17,61 @@ const ImageGrid = () => {
       <div className="row">
         <div className="column">
           <img
-            src="image1.png"
-            alt="keuze 1"
+            src={require("../beer.png")}
+            alt="(speciaal) bier"
             className="grid-image"
             onClick={() => handleClick("Image 1")}
           />
+          <p>(speciaal) bier</p>
         </div>
         <div className="column">
           <img
-            src="image2.png"
+            src={require("../furniture.png")}
             alt="keuze 2"
             className="grid-image"
             onClick={() => handleClick("Image 2")}
           />
+          <p>meubelzaken</p>
         </div>
       </div>
       <div className="row">
         <div className="column">
           <img
-            src="image3.png"
+            src={require("../sport.png")}
             alt="keuze 2"
             className="grid-image"
             onClick={() => handleClick("Image 3")}
           />
+          <p>sport en spel</p>
         </div>
         <div className="column">
           <img
-            src="image4.png"
+            src={require("../history.png")}
             alt="keuze 2"
             className="grid-image"
             onClick={() => handleClick("Image 4")}
           />
+          <p>Historie en Cultuur</p>
         </div>
       </div>
       <div className="row">
         <div className="column">
           <img
-            src="image5.png"
+            src={require("../restaurant.png")}
             alt="keuze 2"
             className="grid-image"
             onClick={() => handleClick("Image 5")}
           />
+          <p>Restaurants</p>
         </div>
         <div className="column">
           <img
-            src="image6.png"
+            src={require("../music.png")}
             alt="keuze 2"
             className="grid-image"
             onClick={() => handleClick("Image 6")}
           />
+          <p>Muziek</p>
         </div>
       </div>
     </div>

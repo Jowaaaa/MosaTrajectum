@@ -1,7 +1,6 @@
 import '../App.css';
 import React from 'react';
 import BottomNavigationBar from '../navbar';
-//import DropdownMenu from '../dropdown';
 import ImageGrid from './imagesgrid';
 
 
@@ -13,8 +12,8 @@ const Voorkeuren = () => {
       <div>
         <ImageGrid/>
            </div>
-      <div class="container">
-        <nav class="navbar">
+      <div className="container">
+        <nav className="navbar">
           <BottomNavigationBar/>
         </nav>
       </div>   

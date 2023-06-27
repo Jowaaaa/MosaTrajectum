@@ -4,6 +4,7 @@ import ImageWithSquare from '../imageCanvas';
 import BottomNavigationBar from '../navbar';
 
 
+
 const Home = () => {
 
   return (
@@ -19,8 +20,8 @@ const Home = () => {
       <div>
         <ImageWithSquare/>
       </div> 
-      <div class="container">
-        <nav class="navbar">
+      <div className='container'>
+        <nav className='navbar'>
           <BottomNavigationBar/>
         </nav>
       </div>   
