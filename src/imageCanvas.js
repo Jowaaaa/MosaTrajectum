@@ -5,12 +5,14 @@ import "./App.css";
 const ImageWithSquare = () => {
   const canvasRef = useRef(null);
   const imageRef = useRef(null);
-
+  
+  
   
   useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
     const colors = ["green", "orange", "red"]; // mogelijke kleuren
+    var now = new Date().getHours();
 
     const parkingPositions = [
       { x: 120, y: 300 }, // posities op canvas
@@ -55,24 +57,28 @@ const ImageWithSquare = () => {
         // pins op basis van drukte
         if (color === "red") {
           redCircleCount++
-          const pinCount = redCircleCount; // Number of pins based on the number of red circles
+          const pinCount = redCircleCount; 
           drawPins(context, x, y, pinWidth, pinHeight, "DarkRed", pinCount);
         } else if (color === "orange") {
-          const pinCount = 4; // Default number of pins for orange circle
+          const pinCount = 4; // Standaard aantal oranje pins
           if (redCircleCount > 0) {
-            drawPins(context, x, y, pinWidth, pinHeight, "green", pinCount + 1); // Add an extra pin for the orange circle if there are any red circles
+            drawPins(context, x, y, pinWidth, pinHeight, "DarkRed", pinCount + 1); 
           } else {
             drawPins(context, x, y, pinWidth, pinHeight, "DarkRed", pinCount);
           }
         } else if (color === "green") {
-          const pinCount = 5; // Default number of pins for green circle
+          const pinCount = 5; // Standaard aantal green pins
           if (redCircleCount > 0) {
-            drawPins(context, x, y, pinWidth, pinHeight, "green", pinCount + redCircleCount); // Add pins based on the number of red circles
+            drawPins(context, x, y, pinWidth, pinHeight, "DarkRed", pinCount + redCircleCount); //
           } else {
             drawPins(context, x, y, pinWidth, pinHeight, "DarkRed", pinCount);
           }
           if (VoorkeurOptie === "Image 3") {
-            drawPins(context, x, y, pinWidth, pinHeight, "orange", 2); // Add extra pins for the green circle if VoorkeurOptie is "Image 3" and there are red circles
+            drawPins(context, x, y, pinWidth, pinHeight, "orange", 2); // Voeg voorkeur pins toe als de voorkeur is gekozen en de parking groen is
+          }
+          if (now > 18){
+            drawPins(context, x, y, pinWidth, pinHeight, "DarkBlue", 4);
+            
           }
         }
       }

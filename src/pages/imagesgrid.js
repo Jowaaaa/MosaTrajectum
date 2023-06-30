@@ -9,7 +9,6 @@ const ImageGrid = () => {
     localStorage.setItem("choice", imageName);
 
 
-    // Add your desired logic here for handling the image click
   };
 
   return (
@@ -71,7 +70,7 @@ const ImageGrid = () => {
             className="grid-image"
             onClick={() => handleClick("Image 6")}
           />
-          <p>Muziek</p>
+
         </div>
       </div>
     </div>
